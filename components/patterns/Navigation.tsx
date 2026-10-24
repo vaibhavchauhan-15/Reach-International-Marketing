@@ -9,6 +9,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden'
 import { ThemeToggle } from './ThemeToggle'
 import { ReachLogo } from '@/components/primitives/ReachLogo'
+import { Button } from '@/components/base/buttons/button'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -371,17 +372,15 @@ export function Navigation() {
         <div className="flex items-center gap-3">
           <ThemeToggle />
 
-          <Link
+          <Button
             href="/request-a-quote/"
-            className="hidden sm:inline-flex items-center justify-center gap-2 px-5 h-10 rounded-full text-label font-medium transition-all hover:opacity-95 shadow-xs"
-            style={{
-              backgroundColor: 'var(--brand-blue, #008CFC)',
-              color: '#FFFFFF',
-            }}
+            color="primary"
+            size="md"
+            className="hidden sm:inline-flex rounded-full px-5 shadow-xs"
+            iconTrailing={<ArrowRight className="size-4" />}
           >
-            <span>Request a Quote</span>
-            <ArrowRight className="size-4" />
-          </Link>
+            Request a Quote
+          </Button>
 
           {/* Mobile hamburger button */}
           <button
