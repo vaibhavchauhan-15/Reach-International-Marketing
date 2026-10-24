@@ -1,0 +1,36 @@
+User-agent: *
+Allow: /
+
+# Disallow internal docs (should never be in /public but belt-and-braces)
+Disallow: /brain/
+Disallow: /rules/
+Disallow: /security/
+Disallow: /architecture/
+
+# AI crawlers — allow search/answer; decide training crawlers with owner (Open Question #11)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Training crawlers — defer to owner decision; allowing by default pending confirmation
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://www.reachinternational.co.in/sitemap.xml

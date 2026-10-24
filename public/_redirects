@@ -1,0 +1,42 @@
+# Cloudflare Pages _redirects
+# Generated from redirect map — do not edit manually.
+# Format: source destination status
+
+# Canonical host — redirect non-www to www (handled at DNS/Cloudflare level)
+# http://reachinternational.co.in/*  https://www.reachinternational.co.in/:splat  301
+
+# Favicon fallback
+/favicon.ico  /icon.svg  302
+
+# Main section redirects
+/services  /services/rental/  301
+
+# Trailing slash enforcement
+/equipment  /equipment/  301
+/about  /about/  301
+/contact  /contact/  301
+/request-a-quote  /request-a-quote/  301
+/industries  /industries/  301
+/privacy  /privacy/  301
+
+# Services
+/services/rental  /services/rental/  301
+/services/equipment-sales  /services/equipment-sales/  301
+
+# Equipment Hubs & Categories
+/equipment/aerial-work-platforms  /equipment/aerial-work-platforms/  301
+/equipment/boom-lifts  /equipment/boom-lifts/  301
+/equipment/scissor-lifts  /equipment/scissor-lifts/  301
+/equipment/vertical-mast-lifts  /equipment/vertical-mast-lifts/  301
+/equipment/spider-lifts  /equipment/spider-lifts/  301
+/equipment/scaffolding  /equipment/scaffolding/  301
+/equipment/material-handling  /equipment/material-handling/  301
+/equipment/forklifts  /equipment/forklifts/  301
+/equipment/reach-trucks  /equipment/reach-trucks/  301
+/equipment/material-lifts  /equipment/material-lifts/  301
+
+# Industries
+/industries/construction  /industries/construction/  301
+/industries/manufacturing  /industries/manufacturing/  301
+/industries/warehousing-logistics  /industries/warehousing-logistics/  301
+/industries/infrastructure  /industries/infrastructure/  301

@@ -1,0 +1,193 @@
+/**
+ * tokens.css — single source of truth for all design tokens.
+ * Components consume ONLY semantic tokens; raw hex values appear here only.
+ * Lint rule enforced: no hardcoded colors in components.
+ */
+
+@import "./globals.css";
+
+/* ─── Brand (raw) ─────────────────────────────────────────────────────────── */
+:root {
+  --brand-blue: #008cfc;
+  --brand-charcoal: #202329;
+  --brand-white: #ffffff;
+
+  /* ─── Light theme (default) ─────────────────────────────────────────────── */
+  --surface-base: #ffffff;
+  --surface-raised: #ffffff;
+  --surface-sunken: #f4f6f9;
+  --surface-tint: #e8f3ff;
+  --surface-inverse: #202329;
+  --surface-overlay: rgba(0, 0, 0, 0.48);
+
+  --text-primary: #202329;   /* 15.74:1 on base — AAA */
+  --text-secondary: #444c59; /* 8.66:1 on base — AAA */
+  --text-muted: #5b6472;     /* 5.98:1 on base */
+  --text-inverse: #ffffff;
+  --text-link: #005aa3;      /* 7.02:1 on base — AAA */
+
+  --border-subtle: #e3e7ed;
+  --border-strong: #8590a0;  /* 3.23:1 on base — UI AA */
+  --border-focus: #005aa3;   /* 7.02:1 — AAA */
+
+  --action-primary-bg: #005aa3;   /* 7.02:1 vs white — AAA */
+  --action-primary-fg: #ffffff;
+  --action-primary-hover: #004a85; /* 9.06:1 with white */
+  --action-secondary-bg: transparent;
+  --action-secondary-border: #8590a0;
+  --action-ghost-hover: #f4f6f9;
+
+  --badge-fg: #00447a;       /* 8.87:1 on tint — AAA */
+  --icon-accent: #008cfc;    /* 3.41:1 on base — UI AA */
+
+  --shadow-sm: 0 1px 2px rgb(16 24 40 / 0.06);
+  --shadow-md: 0 8px 24px rgb(16 24 40 / 0.12);
+
+  --header-height: 72px;
+  --scroll-margin: calc(var(--header-height) + 16px);
+}
+
+/* ─── Dark theme ──────────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --surface-base: #14171c;
+  --surface-raised: #1a1e24;
+  --surface-sunken: #0f1215;
+  --surface-tint: #0c2744;
+  --surface-inverse: #202329;
+  --surface-overlay: rgba(0, 0, 0, 0.64);
+
+  --text-primary: #f3f5f8;   /* 16.45:1 on base — AAA */
+  --text-secondary: #b6bdc8; /* 9.50:1 on base — AAA */
+  --text-muted: #98a1ae;     /* 6.88:1 on base */
+  --text-inverse: #f3f5f8;
+  --text-link: #4db1ff;      /* 7.74:1 on base — AAA */
+
+  --border-subtle: #2a2f37;
+  --border-strong: #6b7482;  /* 3.80:1 on base — UI AA */
+  --border-focus: #4db1ff;   /* 7.74:1 — AAA */
+
+  --action-primary-bg: #008cfc;   /* brand blue, 5.27:1 vs dark base */
+  --action-primary-fg: #06090d;   /* 5.85:1 on bg */
+  --action-primary-hover: #3da9ff; /* 7.90:1 with label */
+  --action-secondary-bg: transparent;
+  --action-secondary-border: #6b7482;
+  --action-ghost-hover: #1a1e24;
+
+  --badge-fg: #8fcdff;       /* 8.89:1 on tint — AAA */
+  --icon-accent: #008cfc;    /* 5.27:1 on dark base */
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.24);
+  --shadow-md: 0 8px 24px rgb(0 0 0 / 0.48);
+}
+
+/* ─── Focus ring ──────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* ─── Scroll margin for sticky header ────────────────────────────────────── */
+[id] {
+  scroll-margin-top: var(--scroll-margin);
+}
+
+/* ─── Base ────────────────────────────────────────────────────────────────── */
+html {
+  color-scheme: light dark;
+}
+
+body {
+  background-color: var(--surface-base);
+  color: var(--text-primary);
+  font-family: var(--font-geist, system-ui, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Skip to content ────────────────────────────────────────────────────── */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: var(--action-primary-bg);
+  color: var(--action-primary-fg);
+  font-weight: 600;
+  border-radius: 0 0 6px 6px;
+  transition: top 0.1s;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Reveal animation (JS-gated) ────────────────────────────────────────── */
+html.js .reveal-hidden {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+html.js .reveal-hidden.revealed {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
+  transition-delay: calc(var(--reveal-index, 0) * 80ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .reveal-hidden {
+    opacity: 0;
+    transform: none;
+  }
+  html.js .reveal-hidden.revealed {
+    opacity: 1;
+    transition: opacity 80ms ease;
+  }
+}
+
+/* ─── Logo theme switching ─────────────────────────────────────────────────── */
+.reach-logo-on-light {
+  display: block;
+}
+.reach-logo-on-dark {
+  display: none;
+}
+
+[data-theme="dark"] .reach-logo-on-light {
+  display: none !important;
+}
+[data-theme="dark"] .reach-logo-on-dark {
+  display: block !important;
+}
+
+[data-theme="light"] .reach-logo-on-light {
+  display: block !important;
+}
+[data-theme="light"] .reach-logo-on-dark {
+  display: none !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .reach-logo-on-light {
+    display: none;
+  }
+  :root:not([data-theme="light"]) .reach-logo-on-dark {
+    display: block;
+  }
+}
+
