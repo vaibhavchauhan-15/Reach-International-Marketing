@@ -1,7 +1,7 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { Button } from '@/components/base/buttons/button'
+import { Button } from '@/components/ui/button'
 import { Phone, ArrowRight } from '@untitledui/icons'
 
 /**

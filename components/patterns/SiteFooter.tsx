@@ -47,6 +47,7 @@ export function SiteFooter() {
       style={{
         backgroundColor: '#09101D',
         color: '#FFFFFF',
+        borderTop: '1px solid rgba(255, 255, 255, 0.08)',
       }}
     >
       {/* Decorative subtle blue glow in corner */}
@@ -70,8 +71,7 @@ export function SiteFooter() {
               <p className="font-medium text-white mb-1">Equipment Enquiries &amp; Support</p>
               <Link
                 href="/request-a-quote/"
-                className="inline-flex items-center gap-1.5 transition-colors font-medium text-sm"
-                style={{ color: 'var(--brand-blue, #008CFC)' }}
+                className="inline-flex items-center gap-1.5 transition-colors font-medium text-sm text-[#008CFC] hover:underline"
               >
                 <span>Request a Custom Quote</span>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -85,7 +85,7 @@ export function SiteFooter() {
           {footerSections.map((section) => (
             <div key={section.title}>
               <h3
-                className="text-xs font-semibold uppercase tracking-wider mb-4 text-gray-300"
+                className="text-xs font-semibold uppercase tracking-wider mb-4 text-gray-200"
               >
                 {section.title}
               </h3>
@@ -94,7 +94,7 @@ export function SiteFooter() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-body-sm text-gray-400 hover:text-white transition-colors"
+                      className="text-body-sm text-gray-400 hover:text-white hover:translate-x-0.5 inline-block transition-all"
                     >
                       {link.label}
                     </Link>

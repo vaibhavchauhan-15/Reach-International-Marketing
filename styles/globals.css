@@ -9,13 +9,22 @@
 @theme {
   --color-background: var(--surface-base);
   --color-foreground: var(--text-primary);
+  --color-card: var(--surface-raised);
+  --color-card-foreground: var(--text-primary);
   --color-popover: var(--surface-raised);
   --color-popover-foreground: var(--text-primary);
-  --color-accent: var(--surface-tint);
-  --color-accent-foreground: var(--text-link);
+  --color-primary: var(--action-primary-bg);
+  --color-primary-foreground: var(--action-primary-fg);
+  --color-secondary: var(--surface-sunken);
+  --color-secondary-foreground: var(--text-primary);
   --color-muted: var(--surface-sunken);
   --color-muted-foreground: var(--text-muted);
+  --color-accent: var(--surface-tint);
+  --color-accent-foreground: var(--text-link);
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #ffffff;
   --color-border: var(--border-subtle);
+  --color-input: var(--border-subtle);
   --color-ring: var(--border-focus);
 }
 

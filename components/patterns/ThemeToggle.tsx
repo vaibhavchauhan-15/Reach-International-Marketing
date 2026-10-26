@@ -2,8 +2,8 @@
 
 import { useTheme } from 'next-themes'
 import { useSyncExternalStore } from 'react'
-import { Button } from '@/components/base/buttons/button'
-import { Moon01, Sun } from '@untitledui/icons'
+import { Button } from '@/components/ui/button'
+import { Sun, Moon } from 'lucide-react'
 
 const subscribe = () => () => {}
 
@@ -15,12 +15,14 @@ export function ThemeToggle() {
 
   return (
     <Button
+      variant="ghost"
+      size="icon"
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} theme`}
-      color="secondary"
-      size="sm"
-      className="w-10 h-10 p-0 rounded-full flex items-center justify-center border shadow-xs transition-transform active:scale-95"
-      iconLeading={isDark ? Sun : Moon01}
+      className="relative size-10 rounded-full border-0 shadow-none hover:bg-[var(--surface-sunken)] active:scale-90 transition-all overflow-hidden cursor-pointer text-[var(--text-primary)]"
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
-    />
+    >
+      <Sun className="size-4.5 rotate-0 scale-100 transition-all duration-300 dark:-rotate-90 dark:scale-0" />
+      <Moon className="absolute size-4.5 rotate-90 scale-0 transition-all duration-300 dark:rotate-0 dark:scale-100" />
+    </Button>
   )
 }

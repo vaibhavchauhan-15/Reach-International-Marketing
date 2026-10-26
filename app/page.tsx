@@ -2,8 +2,15 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { buildFaqJsonLd } from '@/lib/jsonld'
-import { Button } from '@/components/base/buttons/button'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { Card } from '@/components/ui/card'
+import { TiltCard } from '@/components/spectrumui/tilt-card'
+import { StatusBadge } from '@/components/spectrumui/status-badge'
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion'
 import { ArrowRight } from '@untitledui/icons'
+import { HeroSection } from '@/components/patterns/HeroSection'
+import { ClientsSection } from '@/components/patterns/ClientsSection'
 
 export const metadata: Metadata = {
   title: 'Reach International — Aerial Work Platforms & Material Handling Equipment',
@@ -267,159 +274,7 @@ export default function HomePage() {
       />
 
       {/* ── 1. HERO SECTION ────────────────────────────────────────────────────── */}
-      <section className="w-full pt-24 pb-16 md:pt-28 md:pb-20 overflow-hidden">
-        <div className="max-w-wide mx-auto px-4 md:px-6 lg:px-8">
-          {/* Main Hero Card with Atmospheric Backdrop */}
-          <div
-            className="relative rounded-3xl overflow-hidden border border-[#E0EDFF] shadow-sm transition-all"
-            style={{
-              background: 'linear-gradient(135deg, #F0F6FF 0%, #FFFFFF 50%, #EBF4FF 100%)',
-            }}
-          >
-            {/* Subtle light glow accents */}
-            <div
-              className="absolute top-0 right-1/4 w-96 h-96 rounded-full blur-3xl pointer-events-none opacity-40"
-              style={{ backgroundColor: '#008CFC' }}
-            />
-
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-6 md:p-12 lg:p-16">
-              {/* Left Column: Copy & Actions */}
-              <div className="lg:col-span-6 flex flex-col justify-center">
-                {/* Chip Badge */}
-                <div
-                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-6 w-fit shadow-xs"
-                  style={{
-                    backgroundColor: '#E6F2FF',
-                    color: '#0062B8',
-                    border: '1px solid #B8DAFF',
-                  }}
-                >
-                  <span className="w-2 h-2 rounded-full" style={{ backgroundColor: '#008CFC' }} />
-                  Industrial Equipment Rental &amp; Sales
-                </div>
-
-                {/* Hero Headline */}
-                <h1
-                  className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] mb-6"
-                  style={{ color: '#111827' }}
-                >
-                  Reach Higher <br />
-                  <span style={{ color: '#008CFC' }}>with the Right</span> <br />
-                  Equipment.
-                </h1>
-
-                {/* Subtitle */}
-                <p
-                  className="text-base md:text-lg leading-relaxed mb-8 max-w-[540px]"
-                  style={{ color: '#4B5563' }}
-                >
-                  We provide reliable rental and sales solutions for aerial work platforms, material handling equipment, and access solutions — helping your projects move forward, safely and efficiently across India.
-                </p>
-
-                {/* Pill Buttons */}
-                <div className="flex flex-wrap items-center gap-4 mb-10">
-                  <Button
-                    href="/request-a-quote/"
-                    color="primary"
-                    size="lg"
-                    className="rounded-full px-7 shadow-md group"
-                    iconTrailing={<ArrowRight className="size-4" />}
-                  >
-                    Request a Quote
-                  </Button>
-
-                  <Button
-                    href="/equipment/"
-                    color="secondary"
-                    size="lg"
-                    className="rounded-full px-7 shadow-xs group"
-                    iconTrailing={<ArrowRight className="size-4" />}
-                  >
-                    Explore Equipment
-                  </Button>
-                </div>
-
-                {/* Pagination Carousel Indicators */}
-                <div className="flex items-center gap-6 pt-2 text-xs font-semibold text-gray-500">
-                  <div className="flex items-center gap-3">
-                    <span className="font-bold text-gray-900 border-b-2 border-[#008CFC] pb-0.5">01</span>
-                    <span className="hover:text-gray-900 cursor-pointer">02</span>
-                    <span className="hover:text-gray-900 cursor-pointer">03</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      aria-label="Previous slide"
-                      className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-white transition-colors"
-                    >
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                      </svg>
-                    </button>
-                    <button
-                      type="button"
-                      aria-label="Next slide"
-                      className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-white transition-colors"
-                    >
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Column: Hero Visual & Floating Card */}
-              <div className="lg:col-span-6 relative">
-                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-white/60 shadow-lg">
-                  <Image
-                    src="/images/hero_boom_lift.jpg"
-                    alt="Indian industrial technicians working safely on an elevated blue JLG boom lift basket under clear blue sky"
-                    fill
-                    priority
-                    className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
-                </div>
-
-                {/* Floating Featured Equipment Card (matches design image!) */}
-                <div
-                  className="mt-4 sm:absolute sm:-bottom-6 sm:-left-6 sm:mt-0 bg-white/95 backdrop-blur-md rounded-2xl p-4 sm:p-5 shadow-xl border border-gray-100 flex items-center justify-between gap-4 max-w-sm transition-transform hover:-translate-y-1"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="flex -space-x-2">
-                      <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden relative shadow-xs">
-                        <Image src="/images/awp_boom_lift.jpg" alt="Boom lift" fill className="object-cover" />
-                      </div>
-                      <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden relative shadow-xs">
-                        <Image src="/images/awp_scissor_lift.jpg" alt="Scissor lift" fill className="object-cover" />
-                      </div>
-                      <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden relative shadow-xs">
-                        <Image src="/images/mhe_forklift.jpg" alt="Forklift" fill className="object-cover" />
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-bold text-gray-900 leading-tight">Featured Equipment</h4>
-                      <p className="text-xs text-gray-500 font-medium">Boom Lifts • Scissor Lifts • Forklifts</p>
-                    </div>
-                  </div>
-                  <Link
-                    href="/equipment/"
-                    aria-label="View featured equipment"
-                    className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors"
-                    style={{ backgroundColor: '#EBF4FF', color: '#008CFC' }}
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* ── 2. AERIAL WORK PLATFORMS (AWP) ────────────────────────────────────── */}
       <section
@@ -462,16 +317,17 @@ export default function HomePage() {
           {/* Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {awpEquipment.map((item) => (
-              <div
+              <Link
                 key={item.label}
-                className="group flex flex-col rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-md"
+                href={item.href}
+                className="group flex flex-col rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-md cursor-pointer block"
                 style={{
                   backgroundColor: 'var(--surface-base)',
                   border: '1px solid var(--border-subtle)',
                 }}
               >
                 {/* Image */}
-                <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-100">
+                <div className="relative w-full aspect-[4/3] overflow-hidden" style={{ backgroundColor: 'var(--surface-sunken)' }}>
                   <Image
                     src={item.image}
                     alt={item.label}
@@ -479,7 +335,14 @@ export default function HomePage() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
-                  <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-xs px-2.5 py-1 rounded-full text-[11px] font-semibold text-gray-800 shadow-xs">
+                  <div
+                    className="absolute top-3 left-3 backdrop-blur-xs px-2.5 py-1 rounded-full text-[11px] font-semibold shadow-xs"
+                    style={{
+                      backgroundColor: 'var(--surface-raised)',
+                      color: 'var(--text-primary)',
+                      border: '1px solid var(--border-subtle)',
+                    }}
+                  >
                     {item.reach}
                   </div>
                 </div>
@@ -488,41 +351,40 @@ export default function HomePage() {
                 <div className="p-5 flex-1 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>
+                      <h3
+                        className="text-lg font-bold transition-colors group-hover:text-[#008CFC]"
+                        style={{ color: 'var(--text-primary)' }}
+                      >
                         {item.label}
                       </h3>
-                      <Link
-                        href={item.href}
-                        aria-label={`View ${item.label}`}
-                        className="w-8 h-8 rounded-full flex items-center justify-center transition-all group-hover:bg-[#008CFC] group-hover:text-white"
-                        style={{
-                          backgroundColor: 'var(--surface-tint)',
-                          color: 'var(--brand-blue, #008CFC)',
-                        }}
-                      >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </Link>
+                      <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" style={{ color: 'var(--brand-blue, #008CFC)' }} />
                     </div>
                     <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-muted)' }}>
                       {item.desc}
                     </p>
                   </div>
 
-                  {/* Brand tags */}
-                  <div className="pt-3 border-t border-gray-100 flex items-center justify-between text-xs">
-                    <span className="font-medium text-gray-500">Brands:</span>
+                  {/* Brand tags — border removed per feedback */}
+                  <div className="pt-2 flex items-center justify-between text-xs">
+                    <span className="font-medium" style={{ color: 'var(--text-muted)' }}>Brands:</span>
                     <div className="flex items-center gap-1.5">
                       {item.brands.map((b) => (
-                        <span key={b} className="px-2 py-0.5 rounded bg-gray-100 font-semibold text-gray-700 text-[10px]">
+                        <span
+                          key={b}
+                          className="px-2 py-0.5 rounded font-semibold text-[10px]"
+                          style={{
+                            backgroundColor: 'var(--surface-sunken)',
+                            color: 'var(--text-secondary)',
+                            border: '1px solid var(--border-subtle)',
+                          }}
+                        >
                           {b}
                         </span>
                       ))}
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -550,7 +412,7 @@ export default function HomePage() {
               <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight" style={{ color: 'var(--text-primary)' }}>
                 Material Handling Equipment (MHE)
               </h2>
-              <p className="text-base text-gray-600 mt-2 max-w-xl">
+              <p className="text-base mt-2 max-w-xl" style={{ color: 'var(--text-secondary)' }}>
                 Heavy-duty diesel, electric, and lithium-ion forklifts and reach trucks engineered for demanding warehouse and plant logistics.
               </p>
             </div>
@@ -569,16 +431,17 @@ export default function HomePage() {
           {/* Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {mheEquipment.map((item) => (
-              <div
+              <Link
                 key={item.label}
-                className="group flex flex-col rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-md"
+                href={item.href}
+                className="group flex flex-col rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-md cursor-pointer block"
                 style={{
                   backgroundColor: 'var(--surface-base)',
                   border: '1px solid var(--border-subtle)',
                 }}
               >
                 {/* Image */}
-                <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-100">
+                <div className="relative w-full aspect-[4/3] overflow-hidden" style={{ backgroundColor: 'var(--surface-sunken)' }}>
                   <Image
                     src={item.image}
                     alt={item.label}
@@ -586,7 +449,14 @@ export default function HomePage() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
-                  <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-xs px-2.5 py-1 rounded-full text-[11px] font-semibold text-gray-800 shadow-xs">
+                  <div
+                    className="absolute top-3 left-3 backdrop-blur-xs px-2.5 py-1 rounded-full text-[11px] font-semibold shadow-xs"
+                    style={{
+                      backgroundColor: 'var(--surface-raised)',
+                      color: 'var(--text-primary)',
+                      border: '1px solid var(--border-subtle)',
+                    }}
+                  >
                     {item.spec}
                   </div>
                 </div>
@@ -595,41 +465,40 @@ export default function HomePage() {
                 <div className="p-5 flex-1 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>
+                      <h3
+                        className="text-lg font-bold transition-colors group-hover:text-[#008CFC]"
+                        style={{ color: 'var(--text-primary)' }}
+                      >
                         {item.label}
                       </h3>
-                      <Link
-                        href={item.href}
-                        aria-label={`View ${item.label}`}
-                        className="w-8 h-8 rounded-full flex items-center justify-center transition-all group-hover:bg-[#008CFC] group-hover:text-white"
-                        style={{
-                          backgroundColor: 'var(--surface-tint)',
-                          color: 'var(--brand-blue, #008CFC)',
-                        }}
-                      >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </Link>
+                      <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" style={{ color: 'var(--brand-blue, #008CFC)' }} />
                     </div>
                     <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-muted)' }}>
                       {item.desc}
                     </p>
                   </div>
 
-                  {/* Brand tags */}
-                  <div className="pt-3 border-t border-gray-100 flex items-center justify-between text-xs">
-                    <span className="font-medium text-gray-500">Brands:</span>
+                  {/* Brand tags — border removed per feedback */}
+                  <div className="pt-2 flex items-center justify-between text-xs">
+                    <span className="font-medium" style={{ color: 'var(--text-muted)' }}>Brands:</span>
                     <div className="flex items-center gap-1.5">
                       {item.brands.map((b) => (
-                        <span key={b} className="px-2 py-0.5 rounded bg-gray-100 font-semibold text-gray-700 text-[10px]">
+                        <span
+                          key={b}
+                          className="px-2 py-0.5 rounded font-semibold text-[10px]"
+                          style={{
+                            backgroundColor: 'var(--surface-sunken)',
+                            color: 'var(--text-secondary)',
+                            border: '1px solid var(--border-subtle)',
+                          }}
+                        >
                           {b}
                         </span>
                       ))}
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -655,58 +524,66 @@ export default function HomePage() {
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight" style={{ color: 'var(--text-primary)' }}>
               World-Class Brands We Rent &amp; Sell
             </h2>
-            <p className="text-base text-gray-600 mt-3">
+            <p className="text-base mt-3" style={{ color: 'var(--text-secondary)' }}>
               Certified equipment sourced from global leaders in access platforms and material handling technology.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {brandShowcase.map((brand) => (
-              <div
+              <TiltCard
                 key={brand.name}
-                className="p-6 rounded-2xl bg-white border border-gray-200/80 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+                className="p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between h-full"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
                       <div
-                        className="w-12 h-12 rounded-xl flex items-center justify-center font-extrabold text-xl text-white shadow-xs"
-                        style={{ backgroundColor: '#09101D' }}
+                        className="w-12 h-12 rounded-xl flex items-center justify-center font-extrabold text-xl shadow-xs"
+                        style={{
+                          backgroundColor: 'var(--surface-sunken)',
+                          color: 'var(--text-primary)',
+                          border: '1px solid var(--border-subtle)',
+                        }}
                       >
                         {brand.name.slice(0, 3)}
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-gray-900">{brand.name}</h3>
-                        <p className="text-xs font-semibold text-[#008CFC]">{brand.category}</p>
+                        <h3 className="text-xl font-bold text-foreground">{brand.name}</h3>
+                        <p className="text-xs font-semibold text-primary">{brand.category}</p>
                       </div>
                     </div>
-                    <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                      {brand.availability}
-                    </span>
+                    <StatusBadge
+                      status="success"
+                      label={brand.availability}
+                    />
                   </div>
 
-                  <p className="text-xs font-semibold text-gray-700 mb-2 uppercase tracking-wide">
+                  <p className="text-xs font-semibold text-foreground/80 mb-2 uppercase tracking-wide">
                     {brand.typeTag}
                   </p>
-                  <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                     {brand.desc}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-gray-100 flex items-center justify-between">
-                  <span className="text-xs text-gray-500 font-medium">{brand.models}</span>
+                <div className="pt-4 border-t border-border flex items-center justify-between">
+                  <span className="text-xs text-muted-foreground font-medium">{brand.models}</span>
                   <Link
                     href="/request-a-quote/"
-                    className="text-xs font-bold text-[#008CFC] hover:underline"
+                    className="text-xs font-bold text-primary hover:underline"
                   >
                     Get Quote →
                   </Link>
                 </div>
-              </div>
+              </TiltCard>
             ))}
           </div>
         </div>
       </section>
+
+      {/* ── 4B. ENTERPRISE CLIENTS SECTION (Dual Auto-scrolling Loop) ──────── */}
+      <ClientsSection />
 
       {/* ── 5. INDUSTRY SECTION (Matches UI design screenshot layout) ─────────── */}
       <section
@@ -721,7 +598,10 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left: Featured Image Card with Play/Preview Badge */}
             <div className="lg:col-span-5 relative">
-              <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden border border-gray-200 shadow-lg">
+              <div
+                className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border"
+                style={{ borderColor: 'var(--border-subtle)' }}
+              >
                 <Image
                   src="/images/industry_construction.jpg"
                   alt="Indian engineer in safety vest and helmet on elevated scissor lift inspecting infrastructure works"
@@ -731,7 +611,7 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
 
-                {/* Watch Our Solutions Pill (matches attached design!) */}
+                {/* Watch Our Solutions Pill */}
                 <div className="absolute bottom-5 left-5 bg-black/75 backdrop-blur-md rounded-full px-4 py-2 flex items-center gap-3 text-white text-xs font-semibold border border-white/20">
                   <div className="w-7 h-7 rounded-full bg-[#008CFC] flex items-center justify-center text-white">
                     <svg className="w-3.5 h-3.5 fill-current ml-0.5" viewBox="0 0 24 24">
@@ -746,10 +626,11 @@ export default function HomePage() {
             {/* Right: Copy & Industry Grid */}
             <div className="lg:col-span-7">
               <div
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-3"
+                className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-4"
                 style={{
-                  backgroundColor: '#EBF4FF',
-                  color: '#0062B8',
+                  backgroundColor: 'var(--surface-tint)',
+                  color: 'var(--brand-blue, #008CFC)',
+                  border: '1px solid var(--border-subtle)',
                 }}
               >
                 INDUSTRIES
@@ -759,7 +640,7 @@ export default function HomePage() {
                 Tailored Solutions for Every Industry
               </h2>
 
-              <p className="text-base leading-relaxed mb-8 text-gray-600 max-w-xl">
+              <p className="text-base leading-relaxed mb-8 max-w-xl" style={{ color: 'var(--text-secondary)' }}>
                 From high-speed metro viaducts to 24/7 automated warehouses and automotive plants, we deliver equipment and support tailored to keep your operations safe, productive, and on schedule.
               </p>
 
@@ -769,15 +650,31 @@ export default function HomePage() {
                   <Link
                     key={ind.label}
                     href={ind.href}
-                    className="flex flex-col p-4 rounded-xl border border-gray-200 bg-white hover:border-[#008CFC] hover:shadow-xs transition-all group"
+                    className="flex flex-col p-4 rounded-xl transition-all group shadow-xs hover:shadow-md cursor-pointer"
+                    style={{
+                      backgroundColor: 'var(--surface-base)',
+                      border: '1px solid var(--border-subtle)',
+                    }}
                   >
-                    <div className="w-10 h-10 rounded-lg bg-blue-50 text-[#008CFC] flex items-center justify-center mb-3 group-hover:bg-[#008CFC] group-hover:text-white transition-colors">
+                    <div
+                      className="w-10 h-10 rounded-lg flex items-center justify-center mb-3 transition-colors group-hover:bg-[#008CFC] group-hover:text-white"
+                      style={{
+                        backgroundColor: 'var(--surface-tint)',
+                        color: 'var(--brand-blue, #008CFC)',
+                      }}
+                    >
                       {ind.icon}
                     </div>
-                    <span className="text-sm font-bold text-gray-900 group-hover:text-[#008CFC] transition-colors">
+                    <span
+                      className="text-sm font-bold transition-colors group-hover:text-[#008CFC]"
+                      style={{ color: 'var(--text-primary)' }}
+                    >
                       {ind.label}
                     </span>
-                    <span className="text-xs text-gray-500 mt-1 line-clamp-2">
+                    <span
+                      className="text-xs mt-1 line-clamp-2"
+                      style={{ color: 'var(--text-muted)' }}
+                    >
                       {ind.desc}
                     </span>
                   </Link>
@@ -812,33 +709,50 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Card 1: Rental & Sales Solutions */}
             <div
-              className="lg:col-span-7 rounded-3xl p-8 md:p-10 flex flex-col justify-between border border-gray-200 relative overflow-hidden bg-white shadow-xs"
+              className="lg:col-span-7 rounded-3xl p-8 md:p-10 flex flex-col justify-between relative overflow-hidden shadow-xs border"
+              style={{
+                backgroundColor: 'var(--surface-base)',
+                borderColor: 'var(--border-subtle)',
+              }}
             >
               <div>
                 <div
-                  className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-4"
+                  className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-4"
                   style={{
-                    backgroundColor: '#EBF4FF',
-                    color: '#0062B8',
+                    backgroundColor: 'var(--surface-tint)',
+                    color: 'var(--brand-blue, #008CFC)',
+                    border: '1px solid var(--border-subtle)',
                   }}
                 >
                   RENTAL &amp; SALES
                 </div>
-                <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-3">
+                <h3 className="text-2xl md:text-3xl font-extrabold mb-3" style={{ color: 'var(--text-primary)' }}>
                   Flexible Rental &amp; Sales Solutions
                 </h3>
-                <p className="text-base text-gray-600 mb-6 leading-relaxed max-w-lg">
+                <p className="text-base mb-6 leading-relaxed max-w-lg" style={{ color: 'var(--text-secondary)' }}>
                   Choose from short-term project rentals or permanent capital sales options for certified equipment that fits your exact project timeline and budget.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                  <div className="p-3.5 rounded-xl bg-gray-50 border border-gray-100">
-                    <p className="text-xs font-bold text-gray-900 mb-1">Equipment Rental</p>
-                    <p className="text-xs text-gray-500">Flexible daily, monthly &amp; annual leases with full maintenance coverage.</p>
+                  <div
+                    className="p-3.5 rounded-xl border"
+                    style={{
+                      backgroundColor: 'var(--surface-sunken)',
+                      borderColor: 'var(--border-subtle)',
+                    }}
+                  >
+                    <p className="text-xs font-bold mb-1" style={{ color: 'var(--text-primary)' }}>Equipment Rental</p>
+                    <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Flexible daily, monthly &amp; annual leases with full maintenance coverage.</p>
                   </div>
-                  <div className="p-3.5 rounded-xl bg-gray-50 border border-gray-100">
-                    <p className="text-xs font-bold text-gray-900 mb-1">Equipment Sales</p>
-                    <p className="text-xs text-gray-500">Verified OEM machines with complete maintenance histories and warranty support.</p>
+                  <div
+                    className="p-3.5 rounded-xl border"
+                    style={{
+                      backgroundColor: 'var(--surface-sunken)',
+                      borderColor: 'var(--border-subtle)',
+                    }}
+                  >
+                    <p className="text-xs font-bold mb-1" style={{ color: 'var(--text-primary)' }}>Equipment Sales</p>
+                    <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Verified OEM machines with complete maintenance histories and warranty support.</p>
                   </div>
                 </div>
               </div>
@@ -858,9 +772,10 @@ export default function HomePage() {
 
             {/* Card 2: Need a Quote? (Isometric Technical Scissor Lift Drawing) */}
             <div
-              className="lg:col-span-5 rounded-3xl p-8 md:p-10 flex flex-col justify-between border border-blue-100 relative overflow-hidden shadow-xs"
+              className="lg:col-span-5 rounded-3xl p-8 md:p-10 flex flex-col justify-between relative overflow-hidden shadow-xs border"
               style={{
-                background: 'linear-gradient(145deg, #F0F7FF 0%, #E6F0FA 100%)',
+                backgroundColor: 'var(--surface-base)',
+                borderColor: 'var(--border-subtle)',
               }}
             >
               {/* Technical Drawing Scissor Lift SVG */}
@@ -874,7 +789,7 @@ export default function HomePage() {
                   className="opacity-90"
                 >
                   {/* Top Work Platform with Railings */}
-                  <rect x="40" y="20" width="120" height="12" rx="2" stroke="#008CFC" strokeWidth="2.5" fill="#FFFFFF" />
+                  <rect x="40" y="20" width="120" height="12" rx="2" stroke="#008CFC" strokeWidth="2.5" fill="var(--surface-sunken)" />
                   <line x1="45" y1="8" x2="155" y2="8" stroke="#008CFC" strokeWidth="2" strokeDasharray="3 3" />
                   <line x1="45" y1="8" x2="45" y2="20" stroke="#008CFC" strokeWidth="2" />
                   <line x1="155" y1="8" x2="155" y2="20" stroke="#008CFC" strokeWidth="2" />
@@ -883,29 +798,29 @@ export default function HomePage() {
                   {/* Scissor Mechanism Lattice */}
                   <line x1="45" y1="32" x2="155" y2="75" stroke="#008CFC" strokeWidth="3" strokeLinecap="round" />
                   <line x1="155" y1="32" x2="45" y2="75" stroke="#008CFC" strokeWidth="3" strokeLinecap="round" />
-                  <circle cx="100" cy="53.5" r="3.5" fill="#FFFFFF" stroke="#005AA3" strokeWidth="2" />
+                  <circle cx="100" cy="53.5" r="3.5" fill="var(--surface-base)" stroke="#008CFC" strokeWidth="2" />
 
                   <line x1="45" y1="75" x2="155" y2="120" stroke="#008CFC" strokeWidth="3" strokeLinecap="round" />
                   <line x1="155" y1="75" x2="45" y2="120" stroke="#008CFC" strokeWidth="3" strokeLinecap="round" />
-                  <circle cx="100" cy="97.5" r="3.5" fill="#FFFFFF" stroke="#005AA3" strokeWidth="2" />
+                  <circle cx="100" cy="97.5" r="3.5" fill="var(--surface-base)" stroke="#008CFC" strokeWidth="2" />
 
                   {/* Chassis Base */}
-                  <rect x="35" y="120" width="130" height="24" rx="4" stroke="#005AA3" strokeWidth="2.5" fill="#FFFFFF" />
+                  <rect x="35" y="120" width="130" height="24" rx="4" stroke="#008CFC" strokeWidth="2.5" fill="var(--surface-sunken)" />
                   <rect x="45" y="126" width="35" height="12" rx="2" fill="#008CFC" fillOpacity="0.2" />
 
                   {/* Wheels */}
-                  <circle cx="55" cy="155" r="14" fill="#202329" stroke="#008CFC" strokeWidth="2" />
-                  <circle cx="55" cy="155" r="6" fill="#FFFFFF" />
-                  <circle cx="145" cy="155" r="14" fill="#202329" stroke="#008CFC" strokeWidth="2" />
-                  <circle cx="145" cy="155" r="6" fill="#FFFFFF" />
+                  <circle cx="55" cy="155" r="14" fill="var(--surface-sunken)" stroke="#008CFC" strokeWidth="2" />
+                  <circle cx="55" cy="155" r="6" fill="#008CFC" />
+                  <circle cx="145" cy="155" r="14" fill="var(--surface-sunken)" stroke="#008CFC" strokeWidth="2" />
+                  <circle cx="145" cy="155" r="6" fill="#008CFC" />
                 </svg>
               </div>
 
               <div>
-                <h3 className="text-2xl font-extrabold text-gray-900 mb-2">
+                <h3 className="text-2xl font-extrabold mb-2" style={{ color: 'var(--text-primary)' }}>
                   Need a Quote?
                 </h3>
-                <p className="text-sm text-gray-600 mb-6 leading-relaxed">
+                <p className="text-sm mb-6 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                   Get a customized quote for your equipment requirements with fast mobilization across India.
                 </p>
                 <Button
@@ -938,15 +853,19 @@ export default function HomePage() {
             <div className="flex items-start gap-3.5">
               <div
                 className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-                style={{ backgroundColor: '#EBF4FF', color: '#008CFC' }}
+                style={{
+                  backgroundColor: 'var(--surface-tint)',
+                  color: 'var(--brand-blue, #008CFC)',
+                  border: '1px solid var(--border-subtle)',
+                }}
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
               <div>
-                <h4 className="text-sm font-bold text-gray-900 mb-1">Safety First</h4>
-                <p className="text-xs text-gray-500 leading-relaxed">
+                <h4 className="text-sm font-bold mb-1" style={{ color: 'var(--text-primary)' }}>Safety First</h4>
+                <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                   Our top priority is a safe work environment with certified machines.
                 </p>
               </div>
@@ -956,15 +875,19 @@ export default function HomePage() {
             <div className="flex items-start gap-3.5">
               <div
                 className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-                style={{ backgroundColor: '#EBF4FF', color: '#008CFC' }}
+                style={{
+                  backgroundColor: 'var(--surface-tint)',
+                  color: 'var(--brand-blue, #008CFC)',
+                  border: '1px solid var(--border-subtle)',
+                }}
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               </div>
               <div>
-                <h4 className="text-sm font-bold text-gray-900 mb-1">Expert Support</h4>
-                <p className="text-xs text-gray-500 leading-relaxed">
+                <h4 className="text-sm font-bold mb-1" style={{ color: 'var(--text-primary)' }}>Expert Support</h4>
+                <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                   Dedicated team for all your operational and on-site support needs.
                 </p>
               </div>
@@ -974,15 +897,19 @@ export default function HomePage() {
             <div className="flex items-start gap-3.5">
               <div
                 className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-                style={{ backgroundColor: '#EBF4FF', color: '#008CFC' }}
+                style={{
+                  backgroundColor: 'var(--surface-tint)',
+                  color: 'var(--brand-blue, #008CFC)',
+                  border: '1px solid var(--border-subtle)',
+                }}
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
               <div>
-                <h4 className="text-sm font-bold text-gray-900 mb-1">Reliable Equipment</h4>
-                <p className="text-xs text-gray-500 leading-relaxed">
+                <h4 className="text-sm font-bold mb-1" style={{ color: 'var(--text-primary)' }}>Reliable Equipment</h4>
+                <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                   Well-maintained and ready when you are, from leading global OEMs.
                 </p>
               </div>
@@ -992,15 +919,19 @@ export default function HomePage() {
             <div className="flex items-start gap-3.5">
               <div
                 className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-                style={{ backgroundColor: '#EBF4FF', color: '#008CFC' }}
+                style={{
+                  backgroundColor: 'var(--surface-tint)',
+                  color: 'var(--brand-blue, #008CFC)',
+                  border: '1px solid var(--border-subtle)',
+                }}
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
               <div>
-                <h4 className="text-sm font-bold text-gray-900 mb-1">Sustainable Future</h4>
-                <p className="text-xs text-gray-500 leading-relaxed">
+                <h4 className="text-sm font-bold mb-1" style={{ color: 'var(--text-primary)' }}>Sustainable Future</h4>
+                <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                   Greener electric and lithium-ion solutions for zero-emission projects.
                 </p>
               </div>
@@ -1029,51 +960,75 @@ export default function HomePage() {
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight" style={{ color: 'var(--text-primary)' }}>
               How It Works
             </h2>
-            <p className="text-base text-gray-600 mt-2">
+            <p className="text-base mt-2" style={{ color: 'var(--text-secondary)' }}>
               From initial machinery selection to on-site commissioning and ongoing support across India.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Step 1 */}
-            <div className="p-6 rounded-2xl bg-white border border-gray-200 shadow-xs flex flex-col justify-between">
+            <div
+              className="p-6 rounded-2xl shadow-xs flex flex-col justify-between"
+              style={{
+                backgroundColor: 'var(--surface-base)',
+                border: '1px solid var(--border-subtle)',
+              }}
+            >
               <div>
                 <div className="text-3xl font-extrabold text-[#008CFC] mb-4">01</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">Select Machinery</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
+                <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--text-primary)' }}>Select Machinery</h3>
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                   Browse our verified AWP and MHE categories. Filter by working height, payload, or brand: JCB, JLG, Genie, Toyota, Hyundai, or BYD.
                 </p>
               </div>
             </div>
 
             {/* Step 2 */}
-            <div className="p-6 rounded-2xl bg-white border border-gray-200 shadow-xs flex flex-col justify-between">
+            <div
+              className="p-6 rounded-2xl shadow-xs flex flex-col justify-between"
+              style={{
+                backgroundColor: 'var(--surface-base)',
+                border: '1px solid var(--border-subtle)',
+              }}
+            >
               <div>
                 <div className="text-3xl font-extrabold text-[#008CFC] mb-4">02</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">Get Custom Quote</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
+                <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--text-primary)' }}>Get Custom Quote</h3>
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                   Submit your project requirements. Receive transparent commercial rental terms or purchase options tailored to your site timeline.
                 </p>
               </div>
             </div>
 
             {/* Step 3 */}
-            <div className="p-6 rounded-2xl bg-white border border-gray-200 shadow-xs flex flex-col justify-between">
+            <div
+              className="p-6 rounded-2xl shadow-xs flex flex-col justify-between"
+              style={{
+                backgroundColor: 'var(--surface-base)',
+                border: '1px solid var(--border-subtle)',
+              }}
+            >
               <div>
                 <div className="text-3xl font-extrabold text-[#008CFC] mb-4">03</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">Rapid Site Dispatch</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
+                <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--text-primary)' }}>Rapid Site Dispatch</h3>
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                   Every machine undergoes a multi-point safety check before direct transport to your job site anywhere in India.
                 </p>
               </div>
             </div>
 
             {/* Step 4 */}
-            <div className="p-6 rounded-2xl bg-white border border-gray-200 shadow-xs flex flex-col justify-between">
+            <div
+              className="p-6 rounded-2xl shadow-xs flex flex-col justify-between"
+              style={{
+                backgroundColor: 'var(--surface-base)',
+                border: '1px solid var(--border-subtle)',
+              }}
+            >
               <div>
                 <div className="text-3xl font-extrabold text-[#008CFC] mb-4">04</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">Full On-Site Support</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
+                <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--text-primary)' }}>Full On-Site Support</h3>
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                   Our certified technicians provide on-site operator familiarization, scheduled preventative maintenance, and 24/7 technical backup.
                 </p>
               </div>
@@ -1102,7 +1057,7 @@ export default function HomePage() {
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight" style={{ color: 'var(--text-primary)' }}>
               Trusted on India&apos;s Flagship Projects
             </h2>
-            <p className="text-base text-gray-600 mt-2">
+            <p className="text-base mt-2" style={{ color: 'var(--text-secondary)' }}>
               Hear from project managers, supply chain heads, and plant engineers who rely on Reach International.
             </p>
           </div>
@@ -1111,7 +1066,11 @@ export default function HomePage() {
             {testimonials.map((t, idx) => (
               <div
                 key={idx}
-                className="p-7 rounded-2xl bg-white border border-gray-200 shadow-xs flex flex-col justify-between"
+                className="p-7 rounded-2xl shadow-xs flex flex-col justify-between"
+                style={{
+                  backgroundColor: 'var(--surface-raised)',
+                  border: '1px solid var(--border-subtle)',
+                }}
               >
                 <div>
                   {/* Star Rating */}
@@ -1123,15 +1082,22 @@ export default function HomePage() {
                     ))}
                   </div>
 
-                  <p className="text-sm text-gray-700 leading-relaxed italic mb-6">
+                  <p className="text-sm leading-relaxed italic mb-6" style={{ color: 'var(--text-primary)' }}>
                     &ldquo;{t.quote}&rdquo;
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-gray-100">
-                  <p className="text-sm font-bold text-gray-900">{t.author}</p>
-                  <p className="text-xs text-gray-500">{t.role} &bull; {t.org}</p>
-                  <span className="inline-block mt-2 text-[11px] font-semibold text-[#008CFC] bg-blue-50 px-2 py-0.5 rounded">
+                <div className="pt-4" style={{ borderTop: '1px solid var(--border-subtle)' }}>
+                  <p className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>{t.author}</p>
+                  <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{t.role} &bull; {t.org}</p>
+                  <span
+                    className="inline-block mt-2 text-[11px] font-semibold px-2 py-0.5 rounded"
+                    style={{
+                      backgroundColor: 'var(--surface-tint)',
+                      color: 'var(--brand-blue, #008CFC)',
+                      border: '1px solid var(--border-subtle)',
+                    }}
+                  >
                     {t.location}
                   </span>
                 </div>
@@ -1164,33 +1130,14 @@ export default function HomePage() {
               </h2>
             </div>
 
-            <div className="space-y-4">
+            <Accordion type="single" collapsible variant="card">
               {faqs.map((faq, i) => (
-                <details
-                  key={i}
-                  className="group bg-white rounded-2xl border border-gray-200/90 p-5 transition-all shadow-xs open:shadow-sm"
-                >
-                  <summary
-                    className="flex items-center justify-between cursor-pointer list-none gap-4 text-base font-bold text-gray-900"
-                  >
-                    <span>{faq.q}</span>
-                    <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center shrink-0 group-open:bg-[#008CFC] group-open:text-white transition-colors">
-                      <svg
-                        className="w-4 h-4 transition-transform group-open:rotate-180"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </div>
-                  </summary>
-                  <p className="mt-4 pt-3 border-t border-gray-100 text-sm leading-relaxed text-gray-600">
-                    {faq.a}
-                  </p>
-                </details>
+                <AccordionItem key={i} value={`faq-${i}`}>
+                  <AccordionTrigger>{faq.q}</AccordionTrigger>
+                  <AccordionContent>{faq.a}</AccordionContent>
+                </AccordionItem>
               ))}
-            </div>
+            </Accordion>
           </div>
         </div>
       </section>
@@ -1198,7 +1145,10 @@ export default function HomePage() {
       {/* ── 11. INVERSE QUOTE CTA ─────────────────────────────────────────────── */}
       <section
         className="w-full py-20 relative overflow-hidden"
-        style={{ backgroundColor: '#09101D' }}
+        style={{
+          backgroundColor: '#09101D',
+          borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+        }}
       >
         <div
           className="absolute -top-32 -left-32 w-96 h-96 rounded-full blur-3xl pointer-events-none opacity-20"
@@ -1209,8 +1159,9 @@ export default function HomePage() {
           <div
             className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold tracking-wider uppercase mb-4"
             style={{
-              backgroundColor: 'rgba(255,255,255,0.08)',
+              backgroundColor: 'rgba(0, 140, 252, 0.15)',
               color: '#8FCDFF',
+              border: '1px solid rgba(0, 140, 252, 0.3)',
             }}
           >
             PAN-INDIA EQUIPMENT ACCESS
@@ -1220,7 +1171,7 @@ export default function HomePage() {
             Ready to find the right equipment for your project?
           </h2>
 
-          <p className="text-base md:text-lg mb-8 mx-auto text-gray-400 max-w-xl leading-relaxed">
+          <p className="text-base md:text-lg mb-8 mx-auto text-gray-300 max-w-xl leading-relaxed">
             Connect with our heavy machinery specialists. We will recommend the exact machine, working height, payload, and commercial model for your timeline.
           </p>
 
@@ -1237,9 +1188,9 @@ export default function HomePage() {
 
             <Button
               href="/contact/"
-              color="secondary"
+              variant="outline"
               size="lg"
-              className="rounded-full px-8 shadow-xs group"
+              className="rounded-full px-8 shadow-xs group text-white border-white/20 hover:bg-white/10 hover:border-white/40"
               iconTrailing={<ArrowRight className="size-4" />}
             >
               Contact Us

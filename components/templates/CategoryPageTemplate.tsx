@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { buildBreadcrumbJsonLd } from '@/lib/jsonld'
-import { Button } from '@/components/base/buttons/button'
+import { Button } from '@/components/ui/button'
 import { ArrowRight } from '@untitledui/icons'
 
 interface CategoryPageConfig {
