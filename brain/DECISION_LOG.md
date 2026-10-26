@@ -22,6 +22,16 @@ Architectural and design decisions. Format: date · context · decision · alter
 
 ---
 
+## [2026-10-26] Removal of devEngines to resolve npm EBADDEVENGINES in Cloudflare Deploy
+
+**Context:** The user reported that while the build succeeded on Cloudflare, the deployment step failed when Cloudflare executed `npx wrangler deploy` with `npm error code EBADDEVENGINES: Invalid name "pnpm" does not match "npm" for "packageManager"`.
+**Decision:**
+1. Removed `devEngines` configuration block from `package.json`. The standard `"packageManager": "pnpm@11.28.8"` remains in place for Corepack and pnpm.
+2. Verified that `npx wrangler deploy --dry-run` now runs cleanly with exit code 0 and packages 264 assets.
+3. Gates Verified: Clean `pnpm typecheck`, `pnpm lint`, `pnpm build`, and `npx wrangler deploy --dry-run`.
+
+---
+
 ## [2026-10-26] Cloudflare Workers CI/CD Build Compatibility (Node 22 & Worker Name Alignment)
 
 **Context:** During Cloudflare Workers Git build deployment for `ri-marketing`, the build failed during `pnpm install --frozen-lockfile` because `.node-version` was locked to `20` (Node 20.20.2), which lacks the `node:sqlite` built-in module required by `pnpm@11.28.8`. Additionally, the Cloudflare Worker service name `ri-marketing` needed to match `wrangler.toml`.
