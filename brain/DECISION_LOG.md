@@ -22,6 +22,16 @@ Architectural and design decisions. Format: date · context · decision · alter
 
 ---
 
+## [2026-10-26] Cloudflare Workers CI/CD Build Compatibility (Node 22 & Worker Name Alignment)
+
+**Context:** During Cloudflare Workers Git build deployment for `ri-marketing`, the build failed during `pnpm install --frozen-lockfile` because `.node-version` was locked to `20` (Node 20.20.2), which lacks the `node:sqlite` built-in module required by `pnpm@11.28.8`. Additionally, the Cloudflare Worker service name `ri-marketing` needed to match `wrangler.toml`.
+**Decision:**
+1. **Node.js Version Upgrade:** Upgraded `.node-version` and created `.nvmrc` with `22`, matching the local development environment (`v22.23.2`) and satisfying `pnpm@11.28.8`'s requirement for `node:sqlite` (Node >= 22.13).
+2. **Worker Name Alignment:** Updated `name` in `wrangler.toml` to `"ri-marketing"` to strictly comply with Cloudflare Workers Git integration naming rule requiring the dashboard worker name to match `wrangler.toml`.
+3. **Gates Verified:** Clean `pnpm typecheck` (0 errors), `pnpm lint` (0 errors), `pnpm build` (27 static routes generated), and `pnpm wrangler deploy --dry-run` (264 assets).
+
+---
+
 ## [2026-10-26] Migration to Cloudflare Workers with Static Assets & GitHub Actions CI/CD
 
 **Context:** The user requested deploying the website directly to Cloudflare Workers using the CLI (Wrangler) and establishing automated deployment from GitHub Actions whenever code is pushed to `main`.
